@@ -1,7 +1,7 @@
 require_dependency 'email'
 require_dependency 'email_token'
 require_dependency 'trust_level'
-require_dependency 'pbkdf2'
+require_dependency 'bcrypt'
 require_dependency 'summarize'
 require_dependency 'discourse'
 require_dependency 'post_destroyer'
@@ -245,8 +245,8 @@ class User < ActiveRecord::Base
   end
 
   def confirm_password?(password)
-    return false unless password_hash && salt
-    self.password_hash == hash_password(password, salt)
+    return false unless password_hash
+    BCrypt::Password.new(self.password_hash) == password
   end
 
   def new_user?
@@ -501,13 +501,12 @@ class User < ActiveRecord::Base
 
   def ensure_password_is_hashed
     if @raw_password
-      self.salt = SecureRandom.hex(16)
       self.password_hash = hash_password(@raw_password, salt)
     end
   end
 
   def hash_password(password, salt)
-    Pbkdf2.hash_password(password, salt, Rails.configuration.pbkdf2_iterations, Rails.configuration.pbkdf2_algorithm)
+    BCrypt::Password.create(password)
   end
 
   def add_trust_level

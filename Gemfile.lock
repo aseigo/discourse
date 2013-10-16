@@ -166,6 +166,7 @@ GEM
       ember-source
       execjs
       handlebars-source
+    bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -478,6 +479,7 @@ DEPENDENCIES
   airbrake (= 3.1.2)
   annotate!
   barber
+  bcrypt-ruby
   better_errors
   binding_of_caller
   certified

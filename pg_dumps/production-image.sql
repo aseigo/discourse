@@ -6340,3 +6340,10 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- PostgreSQL database dump complete
 --
 
+--Bodega integration table
+CREATE TABLE bodegaAssets (
+    asset int not null,
+    topic int references topics(id) on delete cascade,
+    category int references categories(id) on delete cascade
+);
+
