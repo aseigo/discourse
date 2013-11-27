@@ -104,7 +104,7 @@ PATH
       rails (> 3.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.1)
       actionpack (= 4.0.1)
@@ -144,6 +144,7 @@ GEM
       ember-source
       execjs
       handlebars-source
+    bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -460,6 +461,7 @@ DEPENDENCIES
   airbrake (= 3.1.2)
   annotate!
   barber
+  bcrypt-ruby
   better_errors
   binding_of_caller
   certified
