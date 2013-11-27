@@ -40,7 +40,6 @@
     color: $darkish_gray;
   }
   .warning {
-    @include border-radius-all(6px);
     background-color: lighten($red, 10%);
     padding: 5px 8px;
     color: $white;
@@ -62,9 +61,10 @@
 
   h3 {
     color: #666;
+    margin: 20px 0 10px 0;
   }
 
-  .summary {
+  .map {
     height: 50px;
   }
   .avatar {
@@ -77,9 +77,7 @@
     .btn {
       width: 100%;
       margin-bottom: 5px;
-      -webkit-box-sizing: border-box;
-         -moz-box-sizing: border-box;
-              box-sizing: border-box;
+      @include box-sizing(border-box);
     }
   }
   h2 {
@@ -91,34 +89,17 @@
   }
 }
 
-#no-invites {
-  padding: 10px;
-}
-
-#invited-users {
-  h2 {
-    color: $darkish_gray;
-    font-size: 20px;
-  }
-  .invites {
-    margin-bottom: 20px;
-    tr {
-      height: 45px;
-    }
-  }
-}
-
 .user-main {
-  width: 840px;
+  width: 850px;
   float: left;
   margin-bottom: 50px;
 
   @include medium-width {
-    width: 730px;
+    width: 735px;
   }
 
   @include small-width {
-    width: 650px;
+    width: 680px;
   }
 
   .user-content {
@@ -126,9 +107,117 @@
     background-color: white;
     border: 1px solid #ddd;
     margin-bottom: 10px;
-    @include border-radius-all(4px);
+
+    .btn.right {
+      float: right
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 10px;
+
+      th {
+        text-align: left;
+        border-bottom: 1px solid #aaa;
+        padding: 5px;
+      }
+
+      td {
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+      }
+    }
   }
 
+  .about {
+    background-color: #444;
+    margin-bottom: 10px;
+    overflow: hidden;
+    color: #fff;
+
+
+    .details {
+      text-align: center;
+      padding: 12px;
+
+
+      h1 {
+        font-size: 30px;
+        font-weight: normal;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 6px;
+        font-weight: normal;
+      }
+
+      a[href] {
+        color: #fff;
+      }
+
+      img.avatar {
+        border: 3px solid #eee;
+        margin-bottom: 4px;
+        background-color: white;
+      }
+
+      .suspended {
+        color: #f77;
+      }
+
+      .primary {
+        margin-top: 20px;
+        float: left;
+        width: 75%;
+
+        h1, h2 {margin-top: 10px;}
+
+        .bio {
+          color: #ddd;
+
+          a[href] {
+            color: #aae;
+          }
+        }
+
+      }
+
+      .secondary {
+        float: right;
+        background-color: #222;
+        text-align: right;
+        padding: 0 10px;
+        width: 20%;
+
+        dd {
+          color: white;
+          margin: 0 0 7px 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        dt {
+          color: #aaa;
+          margin: 0;
+        }
+      }
+    }
+
+    .controls {
+      background-color: #ddd;
+      padding: 12px;
+      height: 30px;
+
+      .right {
+        float: right;
+        margin-left: 5px;
+      }
+    }
+  }
 
   .about.collapsed-info {
     .controls {
@@ -166,86 +255,6 @@
     }
   }
 
-  .about {
-    background-color: #444;
-    margin-bottom: 10px;
-    overflow: hidden;
-    border: 1px solid #bbb;
-    color: #fff;
-
-    @include border-radius-all(4px);
-
-    .details {
-      text-align: center;
-      padding: 10px;
-
-
-      h1 {
-        font-size: 30px;
-        font-weight: normal;
-      }
-
-      h2 {
-        font-size: 20px;
-        margin-bottom: 6px;
-        font-weight: normal;
-      }
-
-      a[href] {
-        color: #fff;
-      }
-
-      img.avatar {
-        border: 3px solid #eee;
-        margin-bottom: 4px;
-        background-color: white;
-      }
-
-      .primary {
-        margin-top: 30px;
-        float: left;
-        width: 75%;
-
-        .bio {
-          color: #ddd;
-
-          a[href] {
-            color: #aae;
-          }
-        }
-
-      }
-
-      .secondary {
-        float: right;
-        background-color: #222;
-        text-align: right;
-        padding: 0 10px;
-        width: 20%;
-        @include border-radius-all(4px);
-
-        dd {
-          color: white;
-          margin: 0 0 7px 0;
-        }
-        dt {
-          color: #aaa;
-          margin: 0;
-        }
-      }
-    }
-
-    .controls {
-      background-color: #ddd;
-      margin-top: 10px;
-      padding: 5px;
-
-      .right {
-        float: right;
-      }
-    }
-  }
-
   .user-stream {
     .excerpt {
       margin: 5px 0px;
@@ -269,7 +278,6 @@
       background-color: white;
       border: 1px solid #ddd;
       margin-bottom: 10px;
-      @include border-radius-all(4px);
     }
     .type {
       color: lighten($black, 40%);

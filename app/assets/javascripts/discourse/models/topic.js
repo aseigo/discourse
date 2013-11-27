@@ -87,6 +87,10 @@ Discourse.Topic = Discourse.Model.extend({
     return this.urlForPostNumber(this.get('highest_post_number'));
   }.property('url', 'highest_post_number'),
 
+  lastPosterUrl: function() {
+    return Discourse.getURL("/users/") + this.get("last_poster.username");
+  }.property('last_poster'),
+
   // The amount of new posts to display. It might be different than what the server
   // tells us if we are still asynchronously flushing our "recently read" data.
   // So take what the browser has seen into consideration.
@@ -192,11 +196,16 @@ Discourse.Topic = Discourse.Model.extend({
     });
   },
 
-  // Invite a user to this topic
-  inviteUser: function(user) {
+  /**
+    Invite a user to this topic
+
+    @method createInvite
+    @param {String} emailOrUsername The email or username of the user to be invited
+  **/
+  createInvite: function(emailOrUsername) {
     return Discourse.ajax("/t/" + this.get('id') + "/invite", {
       type: 'POST',
-      data: { user: user }
+      data: { user: emailOrUsername }
     });
   },
 
@@ -331,9 +340,9 @@ Discourse.Topic.reopenClass({
       });
     }
 
-    // Add the best of filter if we have it
-    if (opts.bestOf === true) {
-      data.best_of = true;
+    // Add the summary of filter if we have it
+    if (opts.summary === true) {
+      data.summary = true;
     }
 
     // Check the preload store. If not, load it via JSON

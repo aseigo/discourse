@@ -125,7 +125,7 @@ Discourse.PostView = Discourse.GroupedView.extend(Ember.Evented, {
               if (link.closest('.badge-category').length === 0) {
                 // nor in oneboxes (except when we force it)
                 if (link.closest(".onebox-result").length === 0 || link.hasClass("track-link")) {
-                  link.append("<span class='badge badge-notification clicks' title='" + I18n.t("topic_summary.clicks") + "'>" + lc.clicks + "</span>");
+                  link.append("<span class='badge badge-notification clicks' title='" + I18n.t("topic_map.clicks") + "'>" + lc.clicks + "</span>");
                 }
               }
             }
@@ -135,36 +135,38 @@ Discourse.PostView = Discourse.GroupedView.extend(Ember.Evented, {
     }
   },
 
-  /**
-    Toggle the replies this post is a reply to
+  actions: {
+    /**
+      Toggle the replies this post is a reply to
 
-    @method showReplyHistory
-  **/
-  toggleReplyHistory: function(post) {
+      @method showReplyHistory
+    **/
+    toggleReplyHistory: function(post) {
 
-    var replyHistory = post.get('replyHistory'),
-        topicController = this.get('controller'),
-        origScrollTop = $(window).scrollTop();
+      var replyHistory = post.get('replyHistory'),
+          topicController = this.get('controller'),
+          origScrollTop = $(window).scrollTop();
 
 
-    if (replyHistory.length > 0) {
-      var origHeight = this.$('.embedded-posts.top').height();
+      if (replyHistory.length > 0) {
+        var origHeight = this.$('.embedded-posts.top').height();
 
-      replyHistory.clear();
-      Em.run.next(function() {
-        $(window).scrollTop(origScrollTop - origHeight);
-      });
-    } else {
-      post.set('loadingReplyHistory', true);
-
-      var self = this;
-      topicController.get('postStream').findReplyHistory(post).then(function () {
-        post.set('loadingReplyHistory', false);
-
+        replyHistory.clear();
         Em.run.next(function() {
-          $(window).scrollTop(origScrollTop + self.$('.embedded-posts.top').height());
+          $(window).scrollTop(origScrollTop - origHeight);
         });
-      });
+      } else {
+        post.set('loadingReplyHistory', true);
+
+        var self = this;
+        topicController.get('postStream').findReplyHistory(post).then(function () {
+          post.set('loadingReplyHistory', false);
+
+          Em.run.next(function() {
+            $(window).scrollTop(origScrollTop + self.$('.embedded-posts.top').height());
+          });
+        });
+      }
     }
   },
 

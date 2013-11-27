@@ -3,12 +3,12 @@ class TopicListItemSerializer < ListableTopicSerializer
   attributes :views,
              :like_count,
              :starred,
-             :has_best_of,
+             :has_summary,
              :archetype,
              :rank_details,
-             :last_poster_username
+             :last_poster_username,
+             :category_id
 
-  has_one :category, serializer: BasicCategorySerializer
   has_many :posters, serializer: TopicPosterSerializer, embed: :objects
 
   def starred

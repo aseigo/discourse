@@ -126,11 +126,7 @@ a.star {
 	text-shadow: none !important;
 }
 
-.profiler-results {
-  display: none;
-}
-
-.topic-summary {
+.topic-map {
 
   .btn {
     border-radius: 0 4px 0 4px;
@@ -190,7 +186,7 @@ a.star {
     margin-right: 4px;
   }
 
-  .summary {
+  .map {
     &.collapsed {
     }
     li {
@@ -219,6 +215,7 @@ a.star {
     padding: 7px 14px;
     color: #000;
   }
+
   .information {
     border-top: 1px solid #d1d1d2;
   }
@@ -270,7 +267,7 @@ a.star {
     }
 
    .title {
-    font-size: 14px; line-height: 8px; 
+    font-size: 14px; line-height: 8px;
   }
 
 }
@@ -302,6 +299,7 @@ span.post-count {
 .topic-post {
   article.boxed img {
     max-width: 100%;
+    height: auto;
   }
   &.moderator {
     background-color: #eef0ff;
@@ -347,7 +345,7 @@ iframe {
 }
 
 .btn-group {
-  margin-top: 50px;
+  margin-top: 25px;
   position: relative;
 }
 

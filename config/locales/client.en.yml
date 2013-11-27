@@ -84,7 +84,7 @@ en:
     yes_value: "Yes"
     of_value: "of"
     generic_error: "Sorry, an error has occurred."
-    generic_error_with_reason: "An error occured: %{error}"
+    generic_error_with_reason: "An error occurred: %{error}"
     log_in: "Log In"
     age: "Age"
     last_post: "Last Post"
@@ -183,6 +183,17 @@ en:
       "12": "Sent Items"
       "13": "Inbox"
 
+    categories:
+      all: "all categories"
+      only_category: "only {{categoryName}}"
+      category: "Category"
+      posts: "Posts"
+      topics: "Topics"
+      latest: "Latest"
+      latest_by: "latest by"
+      toggle_ordering: "toggle ordering control"
+      subcategories: "Subcategories:"
+
     user:
       said: "{{username}} said:"
       profile: "Profile"
@@ -205,6 +216,8 @@ en:
       moderator: "{{user}} is a moderator"
       admin: "{{user}} is an admin"
       deleted: "(deleted)"
+      suspended_notice: "This user is suspended until {{date}}."
+      suspended_reason: "Reason: "
 
       messages:
         all: "All"
@@ -267,13 +280,14 @@ en:
         too_long: "Your username is too long."
         checking: "Checking username availability..."
         enter_email: 'Username found. Enter matching email.'
+        prefilled: "Email matches this registered username."
 
       password_confirmation:
         title: "Password Again"
 
       last_posted: "Last Post"
       last_emailed: "Last Emailed"
-      last_seen: "Last Seen"
+      last_seen: "Seen"
       created: "Created At"
       log_out: "Log Out"
       website: "Web Site"
@@ -313,11 +327,13 @@ en:
           other: "after {{count}} minutes"
 
       invited:
+        search: "type to search invites..."
         title: "Invites"
         user: "Invited User"
-        none: "{{username}} hasn't invited any users to the site."
+        none: "No invites were found."
+        truncated: "Showing the first {{count}} invites."
         redeemed: "Redeemed Invites"
-        redeemed_at: "Redeemed At"
+        redeemed_at: "Redeemed"
         pending: "Pending Invites"
         topics_entered: "Topics Entered"
         posts_read_count: "Posts Read"
@@ -326,6 +342,7 @@ en:
         time_read: "Read Time"
         days_visited: "Days Visited"
         account_age_days: "Account age in days"
+        create: "Invite Friends to this Forum"
 
       password:
         title: "Password"
@@ -364,12 +381,11 @@ en:
     unmute: Unmute
     last_post: Last post
 
-    best_of:
-      title: "Best Of"
-      enabled_description: "You're viewing only the best posts in this topic. To see all posts again, click below."
-      description: "There are <b>{{count}}</b> posts in this topic. That's a lot! Would you like to save time by showing only the best posts?"
-      enable: 'Switch to "Best Of" view'
-      disable: 'Cancel "Best Of"'
+    summary:
+      enabled_description: "You're viewing a summary of this topic. To see all posts again, click below."
+      description: "There are <b>{{count}}</b> replies. Would you like to show only the most relevant replies?"
+      enable: 'Summarize This Topic'
+      disable: 'Show All Posts'
 
     private_message_info:
       title: "Private Message"
@@ -378,7 +394,7 @@ en:
 
     email: 'Email'
     username: 'Username'
-    last_seen: 'Last Seen'
+    last_seen: 'Seen'
     created: 'Created'
     trust_level: 'Trust Level'
 
@@ -463,6 +479,8 @@ en:
 
       users_placeholder: "Add a user"
       title_placeholder: "Type your title here. What is this discussion about in one brief sentence?"
+      edit_reason_placeholder: "Short reason of your edit"
+      show_edit_reason: "(Add a reason)"
       reply_placeholder: "Type here. Use Markdown or BBCode to format. Drag or paste an image to upload it."
       view_new_post: "View your new post."
       saving: "Saving..."
@@ -577,13 +595,18 @@ en:
       title: Topic Rank Details
 
     topic:
-      filter_to: "Show only the {{post_count}} posts by {{username}} in this topic"
-      create_in: 'Create {{categoryName}} Topic'
+      filter_to: "Show {{post_count}} posts in topic"
       create: 'Create Topic'
       create_long: 'Create a new Topic'
       private_message: 'Start a private message'
       list: 'Topics'
       new: 'new topic'
+      new_topics:
+        one: '1 new topic'
+        other: '{{count}} new topics'
+      unread_topics:
+        one: '1 unread topic'
+        other: '{{count}} unread topics'
       title: 'Topic'
       loading_more: "Loading more Topics..."
       loading: 'Loading topic...'
@@ -641,7 +664,6 @@ en:
       auto_close_notice: "This topic will automatically close %{timeLeft}."
       auto_close_title: 'Auto-Close Settings'
       auto_close_save: "Save"
-      auto_close_cancel: "Cancel"
       auto_close_remove: "Don't Auto-Close This Topic"
 
       progress:
@@ -719,7 +741,9 @@ en:
         title: 'Invite Friends to Reply'
         action: 'Email Invite'
         help: 'send invitations to friends so they can reply to this topic with a single click'
-        email: "We'll send your friend a brief email allowing them to immediately reply to this topic by clicking a link, no login required."
+        to_topic: "We'll send your friend a brief email allowing them to immediately reply to this topic by clicking a link, no login required."
+        to_forum: "We'll send your friend a brief email allowing them to join the forum by clicking a link."
+
         email_placeholder: 'email address'
         success: "Thanks! We mailed out an invitation to <b>{{email}}</b>. We'll let you know when they redeem your invitation. Check the invitations tab on your user page to keep track of who you've invited."
         error: "Sorry, we couldn't invite that person. Perhaps they are already a user?"
@@ -735,10 +759,10 @@ en:
           one: "made by 1 specific user"
           other: "made by {{count}} specific users"
 
-        best_of: "You're viewing the {{n_best_posts}} {{of_n_posts}}."
-        n_best_posts:
-          one: "1 best post"
-          other: "{{count}} best posts"
+        summary: "You're viewing the {{n_summarized_posts}} {{of_n_posts}}."
+        n_summarized_posts:
+          one: "1 summarized post"
+          other: "{{count}} summarized posts"
         of_n_posts:
           one: "of 1 in the topic"
           other: "of {{count}} in the topic"
@@ -747,7 +771,7 @@ en:
       split_topic:
         title: "Move to New Topic"
         action: "move to new topic"
-        topic_name: "New Topic Name:"
+        topic_name: "New Topic Name"
         error: "There was an error moving posts to the new topic."
         instructions:
           one: "You are about to create a new topic and populate it with the post you've selected."
@@ -776,6 +800,7 @@ en:
       reply_topic: "Reply to {{link}}"
       quote_reply: "quote reply"
       edit: "Editing {{link}} by {{replyAvatar}} {{username}}"
+      edit_reason: "Reason: "
       post_number: "post {{number}}"
       in_reply_to: "in reply to"
       last_edited_on: "post last edited on"
@@ -931,7 +956,6 @@ en:
       choose: 'Select a category&hellip;'
       edit: 'edit'
       edit_long: "Edit Category"
-      edit_uncategorized: "Edit Uncategorized"
       view: 'View Topics in Category'
       general: 'General'
       settings: 'Settings'
@@ -960,6 +984,9 @@ en:
       auto_close_label: "Auto-close topics after:"
       edit_permissions: "Edit Permissions"
       add_permission: "Add Permission"
+      this_year: "this year"
+      position: "position"
+      parent: "Parent Category"
 
     flagging:
       title: 'Why are you flagging this post?'
@@ -967,7 +994,7 @@ en:
       take_action: "Take Action"
       notify_action: 'Notify'
       delete_spammer: "Delete Spammer"
-      delete_confirm: "You are about to delete <b>%{posts}</b> posts and <b>%{topics}</b> topics from this user, remove their account, and add their email address <b>%{email}</b> to a permanent block list. Are you sure this user is really a spammer?"
+      delete_confirm: "You are about to delete <b>%{posts}</b> posts and <b>%{topics}</b> topics from this user, remove their account, block signups from their IP address <b>%{ip_address}</b>, and add their email address <b>%{email}</b> to a permanent block list. Are you sure this user is really a spammer?"
       yes_delete_spammer: "Yes, Delete Spammer"
       cant: "Sorry, you can't flag this post at this time."
       custom_placeholder_notify_user: "Why does this post require you to speak to this user directly and privately? Be specific, be constructive, and always be kind."
@@ -977,11 +1004,10 @@ en:
         more: "{{n}} to go..."
         left: "{{n}} remaining"
 
-    topic_summary:
+    topic_map:
       title: "Topic Summary"
       links_shown: "show all {{totalLinks}} links..."
       clicks: "clicks"
-      topic_link: "topic link"
 
     topic_statuses:
       locked:
@@ -1002,7 +1028,7 @@ en:
     activity: "Activity"
     likes: "Likes"
     likes_long: "there are {{number}} likes in this topic"
-    top_contributors: "Participants"
+    users: "Users"
     category_title: "Category"
     history: "History"
     changed_by: "by {{author}}"
@@ -1073,6 +1099,7 @@ en:
         please_upgrade: "Please upgrade!"
         no_check_performed: "A check for updates has not been performed. Ensure sidekiq is running."
         stale_data: "A check for updates has not been performed lately. Ensure sidekiq is running."
+        version_check_pending: "Looks like you upgraded recently. Fantastic!"
         installed_version: "Installed"
         latest_version: "Latest"
         problems_found: "Some problems have been found with your installation of Discourse:"
@@ -1082,7 +1109,7 @@ en:
         moderators: 'Moderators:'
         admins: 'Admins:'
         blocked: 'Blocked:'
-        banned: 'Banned:'
+        suspended: 'Suspended:'
         private_messages_short: "PMs"
         private_messages_title: "Private Messages"
 
@@ -1153,12 +1180,18 @@ en:
         delete_failed: "Unable to delete group. If this is an automatic group, it cannot be destroyed."
 
       api:
+        generate_master: "Generate Master API Key"
+        none: "There are no active API keys right now."
+        user: "User"
         title: "API"
-        long_title: "API Information"
-        key: "Key"
-        generate: "Generate API Key"
-        regenerate: "Regenerate API Key"
+        key: "API Key"
+        generate: "Generate"
+        regenerate: "Regenerate"
+        revoke: "Revoke"
+        confirm_regen: "Are you sure you want to replace that API Key with a new one?"
+        confirm_revoke: "Are you sure you want to revoke that key?"
         info_html: "Your API key will allow you to create and update topics using JSON calls."
+        all_users: "All Users"
         note_html: "Keep this key <strong>secret</strong>, all users that have it may create arbitrary posts on the forum as any user."
 
       customize:
@@ -1207,6 +1240,9 @@ en:
         last_match_at: "Last Matched"
         match_count: "Matches"
         ip_address: "IP"
+        delete: 'Delete'
+        edit: 'Edit'
+        save: 'Save'
         screened_actions:
           block: "block"
           do_nothing: "do nothing"
@@ -1233,6 +1269,8 @@ en:
             change_site_setting: "change site setting"
             change_site_customization: "change site customization"
             delete_site_customization: "delete site customization"
+            suspend_user: "suspend user"
+            unsuspend_user: "unsuspend user"
         screened_emails:
           title: "Screened Emails"
           description: "When someone tries to create a new account, the following email addresses will be checked and the registration will be blocked, or some other action performed."
@@ -1241,6 +1279,18 @@ en:
           title: "Screened URLs"
           description: "The URLs listed here were used in posts by users who have been identified as spammers."
           url: "URL"
+          domain: "Domain"
+        screened_ips:
+          title: "Screened IPs"
+          description: 'IP addresses that are being watched. Use "Allow" to whitelist IP addresses.'
+          delete_confirm: "Are you sure you want to remove the rule for %{ip_address}?"
+          actions:
+            block: "Block"
+            do_nothing: "Allow"
+          form:
+            label: "New:"
+            ip_address: "IP address"
+            add: "Add"
 
       impersonate:
         title: "Impersonate User"
@@ -1261,7 +1311,7 @@ en:
           pending: "Pending"
           admins: 'Admins'
           moderators: 'Mods'
-          banned: 'Banned'
+          suspended: 'Suspended'
           blocked: 'Blocked'
         approved: "Approved?"
         approved_selected:
@@ -1282,7 +1332,7 @@ en:
           admins: 'Admin Users'
           moderators: 'Moderators'
           blocked: 'Blocked Users'
-          banned: 'Banned Users'
+          suspended: 'Suspended Users'
         reject_successful:
           one: "Successfully rejected 1 user."
           other: "Successfully rejected %{count} users."
@@ -1291,14 +1341,18 @@ en:
           other: "Failed to reject %{count} users."
 
       user:
-        ban_failed: "Something went wrong banning this user {{error}}"
-        unban_failed: "Something went wrong unbanning this user {{error}}"
-        ban_duration: "How long would you like to ban the user for? (days)"
+        suspend_failed: "Something went wrong suspending this user {{error}}"
+        unsuspend_failed: "Something went wrong unsuspending this user {{error}}"
+        suspend_duration: "How long will the user be suspended for?"
+        suspend_duration_units: "(days)"
+        suspend_reason_label: "Why are you suspending? This text <b>will be visible to everyone</b> on this user's profile page, and will be shown to the user when they try to log in. Keep it short."
+        suspend_reason: "Reason"
+        suspended_by: "Suspended by"
         delete_all_posts: "Delete all posts"
         delete_all_posts_confirm: "You are about to delete %{posts} posts and %{topics} topics. Are you sure?"
-        ban: "Ban"
-        unban: "Unban"
-        banned: "Banned?"
+        suspend: "Suspend"
+        unsuspend: "Unsuspend"
+        suspended: "Suspended?"
         moderator: "Moderator?"
         admin: "Admin?"
         blocked: "Blocked?"
@@ -1336,8 +1390,8 @@ en:
           one: "Users can't be deleted if they registered more than %{count} day ago, or if they have posts. Delete all posts before trying to delete a user."
           other: "Users can't be deleted if they registered more than %{count} days ago, or if they have posts. Delete all posts before trying to delete a user."
         delete_confirm: "Are you SURE you want to delete this user? This action is permanent!"
-        delete_and_block: "<b>Yes</b>, and <b>block</b> signups from this email address"
-        delete_dont_block: "<b>Yes</b>, but <b>allow</b> signups from this email address"
+        delete_and_block: "<b>Yes</b>, and <b>block</b> signups from this email and IP address"
+        delete_dont_block: "<b>Yes</b>, but <b>allow</b> signups from this email and IP address"
         deleted: "The user was deleted."
         delete_failed: "There was an error deleting that user. Make sure all posts are deleted before trying to delete the user."
         send_activation_email: "Send Activation Email"
@@ -1350,9 +1404,10 @@ en:
         unblock_failed: 'There was a problem unblocking the user.'
         block_failed: 'There was a problem blocking the user.'
         deactivate_explanation: "A deactivated user must re-validate their email."
-        banned_explanation: "A banned user can't log in."
+        suspended_explanation: "A suspended user can't log in."
         block_explanation: "A blocked user can't post or start topics."
         trust_level_change_failed: "There was a problem changing the user's trust level."
+        suspend_modal_title: "Suspend User"
 
       site_content:
         none: "Choose a type of content to begin editing."
@@ -1364,5 +1419,19 @@ en:
         title: 'Settings'
         reset: 'reset to default'
         none: 'none'
-
-
+        no_results: "No results found."
+        categories:
+          all_results: 'All'
+          required: 'Required'
+          basic: 'Basic Setup'
+          users: 'Users'
+          posting: 'Posting'
+          email: 'Email'
+          files: 'Files'
+          trust: 'Trust Levels'
+          security: 'Security'
+          seo: 'SEO'
+          spam: 'Spam'
+          rate_limits: 'Rate Limits'
+          developer: 'Developer'
+          uncategorized: 'Uncategorized'
